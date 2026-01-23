@@ -415,6 +415,31 @@
                 text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Добавляем тень тексту */
             }
         }
+        .hero-mobile-img {
+            display: none; /* Скрыто на десктопе */
+        }
+
+        @media (max-width: 768px) {
+            .hero-mobile-img {
+                display: block; /* Видимо на мобильном */
+                width: 100%;
+                height: auto;
+                border-radius: 12px;
+                box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+                border: 1px solid var(--border-light);
+                margin-bottom: 30px;
+            }
+
+            .hero {
+                background-image: none !important; /* Убираем фон на мобильном */
+                background-color: var(--bg-dark) !important;
+                padding-top: 110px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -437,6 +462,7 @@
                 <div class="pulse-dot"></div>
                 Пул рекламодателей сформирован. Старт выплат: Февраль 2026
             </div>
+            <img src="hero_bg.webp" alt="Пример брендированной тележки" class="hero-mobile-img">
 
             <h1>Монетизация парка тележек<br>без вложений сети</h1>
             <p>Агентство PIXALES предлагает монетизировать «скрытый» актив. Наши клиенты готовы разместить рекламу на вашем оборудовании уже в следующем месяце.</p>
