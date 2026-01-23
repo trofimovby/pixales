@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Коммерческое предложение | PIXALES</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #1a1a1a;
+            --color-secondary: #4a4a4a;
+            --color-accent: #c17a28;
+            --color-border: #e0e0e0;
+            --color-bg: #ffffff;
+            --color-bg-light: #f8f8f8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--color-primary);
+            background: var(--color-bg);
+            line-height: 1.6;
+            font-size: 11pt;
+        }
+
+        .document {
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20mm;
+            background: white;
+        }
+
+        /* Document Header */
+        .doc-header {
+            border-bottom: 2px solid var(--color-primary);
+            padding-bottom: 15mm;
+            margin-bottom: 15mm;
+        }
+
+        .doc-title {
+            font-size: 14pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8mm;
+        }
+
+        .doc-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 9pt;
+            color: var(--color-secondary);
+        }
+
+        .company-name {
+            font-size: 18pt;
+            font-weight: 700;
+            margin-bottom: 3mm;
+        }
+
+        .company-tagline {
+            font-size: 10pt;
+            color: var(--color-secondary);
+            font-weight: 500;
+        }
+
+        /* Section Styles */
+        .section {
+            margin-bottom: 12mm;
+            page-break-inside: avoid;
+        }
+
+        .section-title {
+            font-size: 12pt;
+            font-weight: 700;
+            margin-bottom: 4mm;
+            padding-bottom: 2mm;
+            border-bottom: 1px solid var(--color-border);
+            color: var(--color-primary);
+        }
+
+        .section-subtitle {
+            font-size: 10pt;
+            font-weight: 600;
+            margin: 4mm 0 2mm 0;
+            color: var(--color-accent);
+        }
+
+        .section-text {
+            font-size: 10pt;
+            line-height: 1.7;
+            color: var(--color-secondary);
+            margin-bottom: 3mm;
+        }
+
+        /* Lists */
+        .doc-list {
+            margin: 3mm 0;
+            padding-left: 6mm;
+        }
+
+        .doc-list li {
+            font-size: 10pt;
+            line-height: 1.7;
+            margin-bottom: 2mm;
+            color: var(--color-secondary);
+        }
+
+        /* Key Points */
+        .key-points {
+            background: var(--color-bg-light);
+            border-left: 3px solid var(--color-accent);
+            padding: 4mm 5mm;
+            margin: 4mm 0;
+        }
+
+        .key-points-title {
+            font-size: 10pt;
+            font-weight: 600;
+            margin-bottom: 2mm;
+            color: var(--color-primary);
+        }
+
+        /* Table */
+        .doc-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 4mm 0;
+            font-size: 9pt;
+        }
+
+        .doc-table th {
+            background: var(--color-bg-light);
+            padding: 3mm;
+            text-align: left;
+            font-weight: 600;
+            border: 1px solid var(--color-border);
+        }
+
+        .doc-table td {
+            padding: 3mm;
+            border: 1px solid var(--color-border);
+            color: var(--color-secondary);
+        }
+
+        /* Info Boxes */
+        .info-box {
+            border: 1px solid var(--color-border);
+            padding: 4mm;
+            margin: 4mm 0;
+            background: var(--color-bg-light);
+        }
+
+        .info-box-title {
+            font-size: 10pt;
+            font-weight: 600;
+            margin-bottom: 2mm;
+        }
+
+        /* Geography Tags */
+        .geo-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2mm;
+            margin: 3mm 0;
+        }
+
+        .geo-tag {
+            display: inline-block;
+            padding: 1.5mm 3mm;
+            border: 1px solid var(--color-border);
+            border-radius: 2mm;
+            font-size: 9pt;
+            background: white;
+        }
+
+        .geo-tag.primary {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        /* Timeline */
+        .timeline {
+            margin: 4mm 0;
+        }
+
+        .timeline-item {
+            margin-bottom: 4mm;
+            padding-left: 6mm;
+            border-left: 2px solid var(--color-border);
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -4.5mm;
+            top: 1mm;
+            width: 7mm;
+            height: 7mm;
+            border: 2px solid var(--color-accent);
+            border-radius: 50%;
+            background: white;
+        }
+
+        .timeline-title {
+            font-size: 10pt;
+            font-weight: 600;
+            margin-bottom: 1mm;
+        }
+
+        .timeline-text {
+            font-size: 9pt;
+            color: var(--color-secondary);
+        }
+
+        /* CTA Block */
+        .cta-section {
+            border: 2px solid var(--color-primary);
+            padding: 6mm;
+            margin: 8mm 0;
+            background: var(--color-bg-light);
+            page-break-inside: avoid;
+        }
+
+        .cta-title {
+            font-size: 12pt;
+            font-weight: 700;
+            margin-bottom: 3mm;
+            text-align: center;
+        }
+
+        .cta-text {
+            font-size: 10pt;
+            text-align: center;
+            margin-bottom: 4mm;
+            color: var(--color-secondary);
+        }
+
+        .contact-info {
+            text-align: center;
+            font-size: 10pt;
+            line-height: 1.8;
+        }
+
+        .contact-info strong {
+            color: var(--color-accent);
+        }
+
+        /* Footer */
+        .doc-footer {
+            margin-top: 10mm;
+            padding-top: 5mm;
+            border-top: 1px solid var(--color-border);
+            font-size: 8pt;
+            color: var(--color-secondary);
+            text-align: center;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .document {
+                max-width: 100%;
+                margin: 0;
+                padding: 15mm;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+
+            .cta-section {
+                page-break-before: avoid;
+            }
+
+            @page {
+                size: A4;
+                margin: 15mm;
+            }
+        }
+
+        @media screen {
+            body {
+                background: #e5e5e5;
+                padding: 10mm 0;
+            }
+
+            .document {
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="document">
+
+        <div class="doc-header">
+            <div class="company-name">PIXALES</div>
+            <div class="company-tagline">Рекламное агентство</div>
+            <div style="margin-top: 8mm;">
+                <div class="doc-title">Коммерческое предложение</div>
+                <div style="font-size: 11pt; font-weight: 600; margin-bottom: 3mm;">Монетизация парка торговых тележек</div>
+                <div class="doc-meta">
+                    <span>Дата: 23 января 2026</span>
+                    <span>Документ: КП-RT-2026/01</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">1. Резюме предложения</div>
+            <div class="section-text">
+                Рекламное агентство PIXALES предлагает торговой сети монетизировать существующий актив — парк торговых тележек — без капитальных вложений со стороны сети.
+            </div>
+            <div class="key-points">
+                <div class="key-points-title">Ключевые параметры:</div>
+                <ul class="doc-list" style="margin: 0; padding-left: 5mm;">
+                    <li>Нулевые инвестиции со стороны торговой сети</li>
+                    <li>Пассивный доход без управленческих затрат</li>
+                    <li>Пул рекламодателей сформирован, старт выплат — февраль 2026</li>
+                    <li>Полный операционный цикл обеспечивается агентством</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">2. Описание решения</div>
+            <div class="section-text">
+                Агентство PIXALES размещает рекламные материалы крупных брендов FMCG на поверхностях торговых тележек. Монтаж осуществляется с использованием безопасных креплений, не требующих клеевых составов и не нарушающих целостность инвентаря.
+            </div>
+            <div class="section-text">
+                Торговая сеть выступает владельцем актива и получает регулярные платежи в соответствии с выбранной финансовой моделью. Агентство берёт на себя все операционные процессы: поиск рекламодателей, производство материалов, монтаж, техническое обслуживание, демонтаж.
+            </div>
+            <div class="info-box">
+                <div class="info-box-title">Трансформация бизнес-модели актива:</div>
+                <div style="font-size: 9pt; color: var(--color-secondary);">
+                    Парк тележек из центра затрат (амортизация, ремонт, обслуживание) трансформируется в источник прибыли без изменения основной функции инвентаря и без дополнительных инвестиций сети.
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">3. Ценность для торговой сети</div>
+            <ul class="doc-list">
+                <li><strong>Финансовая:</strong> Дополнительный источник дохода без капитальных затрат и операционных усилий со стороны сети</li>
+                <li><strong>Операционная:</strong> Агентство обеспечивает полный цикл работ, персонал сети не вовлечён в процесс</li>
+                <li><strong>Техническая:</strong> Решение протестировано, не влияет на функциональность оборудования и логистику торгового зала</li>
+                <li><strong>Контрактная:</strong> Сеть сохраняет право вето на категории рекламодателей (исключение прямых конкурентов)</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="section-title">4. Финансовая модель</div>
+            <div class="section-text">
+                Агентство предлагает гибкие условия сотрудничества для максимизации дохода торговой сети.
+            </div>
+
+            <table class="doc-table">
+                <thead>
+                    <tr>
+                        <th style="width: 30%;">Модель</th>
+                        <th>Характеристики</th>
+                        <th style="width: 25%;">Преимущества</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Модель А: Фиксированная аренда</strong></td>
+                        <td>
+                            • Фиксированная плата за единицу инвентаря<br>
+                            • Ежеквартальные платежи (предоплата)<br>
+                            • Независимость от сезонности
+                        </td>
+                        <td>Прогнозируемый бюджет, финансовая стабильность</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Модель Б: Доля от выручки</strong></td>
+                        <td>
+                            • Процент от каждого рекламного контракта<br>
+                            • Прозрачная отчётность (Open Book)<br>
+                            • Повышенный доход в периоды высокого спроса
+                        </td>
+                        <td>Максимизация прибыли, потенциал роста</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="section-text" style="margin-top: 3mm;">
+                Конкретные ставки рассчитываются индивидуально на основе количества единиц инвентаря и географии присутствия сети.
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">5. География реализации</div>
+            <div class="section-text">
+                Агентство готово к запуску во всех областных центрах присутствия торговой сети на территории Республики Беларусь.
+            </div>
+            <div class="section-subtitle">Приоритетные регионы:</div>
+            <div class="geo-list">
+                <span class="geo-tag primary">Минск</span>
+                <span class="geo-tag">Брест</span>
+                <span class="geo-tag">Гомель</span>
+                <span class="geo-tag">Гродно</span>
+                <span class="geo-tag">Витебск</span>
+                <span class="geo-tag">Могилёв</span>
+                <span class="geo-tag">Бобруйск</span>
+                <span class="geo-tag">Барановичи</span>
+                <span class="geo-tag">Борисов</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">6. Процесс запуска и SLA</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-title">Этап 1. Технический аудит (3 рабочих дня)</div>
+                    <div class="timeline-text">Выезд на объекты, замер моделей тележек, подбор типа крепления, согласование технических решений с представителями сети.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">Этап 2. Подписание договора</div>
+                    <div class="timeline-text">Фиксация финансовой модели, утверждение списка запрещённых категорий рекламодателей, определение зон ответственности сторон.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">Этап 3. Монтаж рекламных конструкций</div>
+                    <div class="timeline-text">Работы выполняются в часы закрытия торговых точек или в периоды минимального трафика. Процесс не влияет на работу торгового зала и логистические процессы.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">Этап 4. Начало выплат</div>
+                    <div class="timeline-text">Предоставление фотоотчётов о размещении, ежемесячное перечисление платежей на расчётный счёт торговой сети.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">7. Юридические аспекты и управление рисками</div>
+
+            <div class="section-subtitle">Техническая безопасность</div>
+            <div class="section-text">
+                Агентство использует технологию безклеевого крепления (Non-Adhesive). Монтаж осуществляется посредством инженерных пластиковых зажимов, не нарушающих целостность поверхности инвентаря. После демонтажа тележка сохраняет исходное состояние.
+            </div>
+            <div class="section-text">
+                <strong>Технические характеристики конструкций:</strong> антивандальный ABS-пластик, отсутствие острых углов, класс защиты IP65 (совместимость с профессиональными системами мойки).
+            </div>
+
+            <div class="section-subtitle">Операционные риски</div>
+            <ul class="doc-list">
+                <li>Рекламные конструкции монтируются на переднюю часть тележек таким образом, чтобы не препятствовать парковке инвентаря (сохранение возможности складирования «паровозиком»)</li>
+                <li>Техническое обслуживание и замена повреждённых элементов осуществляется силами агентства за счёт агентства</li>
+                <li>Персонал торговой сети не участвует в процессе обслуживания рекламных конструкций</li>
+            </ul>
+
+            <div class="section-subtitle">Распределение ответственности</div>
+            <div class="section-text">
+                Агентство PIXALES берёт на себя полную ответственность за техническое состояние рекламных конструкций, соответствие решений стандартам безопасности и своевременное устранение любых повреждений. Финансовые и репутационные риски для торговой сети отсутствуют.
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">8. Обоснование актуальности</div>
+            <ul class="doc-list">
+                <li><strong>Сформированный пул заказчиков:</strong> Крупные бренды FMCG подтвердили участие в размещении с февраля 2026 года</li>
+                <li><strong>Протестированное решение:</strong> Технология монтажа апробирована на различных моделях торгового оборудования</li>
+                <li><strong>Немедленная ликвидность:</strong> Торговая сеть начинает получать платежи в первом квартале 2026 года</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="section-title">9. Опыт и компетенции</div>
+            <div class="section-text">
+                Агентство PIXALES специализируется на реализации проектов Retail Media и Trade Marketing для крупных рекламодателей категории FMCG. Портфель текущих клиентов включает федеральные и международные бренды, работающие на территории Республики Беларусь.
+            </div>
+            <div class="section-text">
+                Ввиду действующих соглашений о конфиденциальности (NDA) детальная информация о реализованных проектах предоставляется при личной встрече уполномоченным представителям торговой сети.
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <div class="cta-title">Следующий шаг: Пилотный проект и расчёт дохода</div>
+            <div class="cta-text">
+                Агентство предлагает провести пилотный запуск на ограниченном количестве торговых точек для валидации финансовой модели и операционных процессов.
+            </div>
+            <div class="cta-text">
+                Для расчёта ориентировочного дохода торговой сети на основе фактического количества единиц инвентаря предлагаем провести консультацию с коммерческим директором агентства.
+            </div>
+            <div class="contact-info">
+                <div style="margin-bottom: 2mm;"><strong>Контакты для связи:</strong></div>
+                <div>Телефон: +375 (29) 000-00-00</div>
+                <div>Email: info@pixales.by</div>
+            </div>
+        </div>
+
+        <div class="doc-footer">
+            <div>© 2026 Рекламное агентство PIXALES. Документ подготовлен для внутреннего рассмотрения.</div>
+            <div style="margin-top: 2mm;">Информация, содержащаяся в настоящем документе, является конфиденциальной и предназначена исключительно для адресата.</div>
+        </div>
+
+    </div>
+</body>
+</html>
