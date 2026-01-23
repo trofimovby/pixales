@@ -391,6 +391,30 @@
             .roadmap { padding-left: 30px; }
             .step::before { left: -39px; }
         }
+        /* --- MOBILE HERO IMAGE FIX --- */
+        @media (max-width: 768px) {
+            .hero {
+                /* Добавляем фоновое изображение с затемнением для читаемости текста */
+                background-image: linear-gradient(rgba(11, 13, 17, 0.6), rgba(11, 13, 17, 0.8)), url('hero_bg.webp') !important;
+                /* Масштабируем изображение, чтобы оно покрывало весь блок */
+                background-size: cover !important;
+                /* Центрируем изображение */
+                background-position: center center !important;
+                /* Убираем фиксированный фон, чтобы он нормально прокручивался */
+                background-attachment: scroll !important;
+                /* Увеличиваем минимальную высоту, чтобы показать больше картинки */
+                min-height: 600px;
+                /* Добавляем отступы, чтобы текст не прилипал к краям */
+                padding-top: 120px;
+                padding-bottom: 80px;
+            }
+
+            /* Немного увеличим заголовок на фоне картинки для баланса */
+            .hero h1 {
+                font-size: 2.2rem;
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Добавляем тень тексту */
+            }
+        }
     </style>
 </head>
 <body>
