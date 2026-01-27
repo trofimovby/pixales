@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PIXALES | Монетизация Торговых Сетей</title>
+    <title>PEAKSALES | Монетизация Торговых Сетей</title>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
 
@@ -200,44 +200,37 @@
         }
         .list-box li::before { content: '✓'; position: absolute; left: 0; color: var(--accent-gold-bright); font-weight: 800; }
 
-        /* Geo Tags */
+        /* Geo Photos Grid (NEW) */
         .geo-block {
-            background: #1a1e29;
-            padding: 40px;
-            border-radius: 16px;
-            border: 1px solid var(--border-light);
-            text-align: center;
+            /* background: #1a1e29; */
+            /* padding: 40px; */ /* Убрали паддинги, чтобы фото смотрелись органично */
+            /* border-radius: 16px; */
+            /* border: 1px solid var(--border-light); */
         }
-        .geo-tags { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 20px; }
-        .tag {
-            background: rgba(255,255,255,0.05);
-            padding: 8px 18px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            border: 1px solid var(--border-light);
-            font-weight: 500;
-        }
-        .tag.main { border-color: var(--accent-gold); color: var(--accent-gold-bright); background: rgba(217, 119, 6, 0.1); }
-
-        /* --- FINANCE MODELS --- */
-        .models-grid {
+        .geo-photos {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 25px;
         }
-        .model-card {
-            background: linear-gradient(145deg, #1a1e29 0%, #0f1115 100%);
-            border: 1px solid var(--border-light);
-            padding: 35px;
-            border-radius: 12px;
+        .photo-placeholder {
+            background: #1a1e29;
+            border: 1px dashed var(--text-secondary);
+            border-radius: 8px;
+            aspect-ratio: 1 / 1; /* Квадратные фото */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
             transition: 0.3s;
         }
-        .model-card:hover { border-color: var(--accent-gold); transform: translateY(-5px); }
-        .model-card h4 { font-size: 1.4rem; margin-bottom: 15px; color: var(--accent-gold-bright); }
-        .model-card ul li { margin-bottom: 12px; color: var(--text-secondary); list-style: none; padding-left: 20px; position: relative; }
-        .model-card ul li::before { content: '•'; color: var(--accent-gold); position: absolute; left: 0; font-size: 1.5rem; line-height: 1rem; }
+        .photo-placeholder:hover { border-color: var(--accent-gold); color: var(--accent-gold); }
+
+        @media (max-width: 600px) {
+            .geo-photos { grid-template-columns: 1fr; }
+            .photo-placeholder { aspect-ratio: 16/9; }
+        }
 
         /* --- ROADMAP --- */
         .roadmap { margin-top: 50px; border-left: 2px solid var(--border-light); padding-left: 50px; }
@@ -249,30 +242,6 @@
         }
         .step h4 { font-size: 1.3rem; margin-bottom: 10px; font-weight: 700; }
         .step p { color: var(--text-secondary); font-size: 1rem; }
-
-        /* --- FAQ --- */
-        .faq-item {
-            background: var(--bg-card);
-            margin-bottom: 20px;
-            border-radius: 12px;
-            border: 1px solid var(--border-light);
-            padding: 25px;
-        }
-        .faq-question {
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-        }
-        .faq-question::before {
-            content: '?';
-            display: inline-flex; justify-content: center; align-items: center;
-            width: 24px; height: 24px; background: var(--accent-gold); color: black;
-            border-radius: 50%; margin-right: 15px; font-size: 0.9rem; font-weight: 800;
-        }
-        .faq-answer { color: var(--text-secondary); font-size: 1rem; padding-left: 40px; }
 
         /* --- FOOTER --- */
         .contact-box {
@@ -446,12 +415,10 @@
 
     <header>
         <div class="container nav-flex">
-            <div class="logo">PIX<span class="text-gold">ALES</span></div>
+            <div class="logo">PEAK<span class="text-gold">SALES</span></div>
             <div class="nav-links">
                 <a href="#offer">Оффер</a>
-                <a href="#clients">География</a>
-                <a href="#finance">Доход</a>
-                <a href="#tech">Безопасность</a>
+                <a href="#clients">Проекты</a> <a href="#tech">Безопасность</a>
             </div>
         </div>
     </header>
@@ -465,10 +432,9 @@
             <img src="hero_bg.webp" alt="Пример брендированной тележки" class="hero-mobile-img">
 
             <h1>Монетизация парка тележек<br>без вложений сети</h1>
-            <p>Агентство PIXALES предлагает монетизировать «скрытый» актив. Наши клиенты готовы разместить рекламу на вашем оборудовании уже в следующем месяце.</p>
+            <p>Агентство PEAKSALES предлагает монетизировать «скрытый» актив. Наши клиенты готовы разместить рекламу на вашем оборудовании уже в следующем месяце.</p>
 
             <div class="btn-group">
-                <a href="#contact" class="btn-primary">Забрать бюджет на Февраль</a>
                 <a href="kp.html" target="_blank" class="btn-cloud">
                     <span style="font-size: 1.2rem; margin-right: 10px;">📂</span>
                     Смотреть документы
@@ -511,19 +477,13 @@
             </div>
 
             <div class="geo-block fade-up">
-                <div style="font-weight: 700; margin-bottom: 15px; font-size: 1.2rem;">География запуска</div>
-                <p style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 25px;">Готовы работать во всех областных центрах присутствия сети.</p>
-                <div class="geo-tags">
-                    <span class="tag main">Минск</span>
-                    <span class="tag">Брест</span>
-                    <span class="tag">Гомель</span>
-                    <span class="tag">Гродно</span>
-                    <span class="tag">Витебск</span>
-                    <span class="tag">Могилев</span>
-                    <span class="tag">Бобруйск</span>
-                    <span class="tag">Барановичи</span>
-                    <span class="tag">Борисов</span>
-                </div>
+                <div style="font-weight: 700; margin-bottom: 15px; font-size: 1.2rem;">Примеры реализации</div>
+                <p style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 25px;">Фото установленных конструкций в торговом зале.</p>
+                <div class="geo-photos">
+    <img src="gallery_1.webp" alt="Пример 1" class="content-image" style="height: 100%; object-fit: cover;">
+    <img src="gallery_2.webp" alt="Пример 2" class="content-image" style="height: 100%; object-fit: cover;">
+    <img src="gallery_3.webp" alt="Пример 3" class="content-image" style="height: 100%; object-fit: cover;">
+</div>
             </div>
         </div>
     </section>
@@ -560,38 +520,9 @@
         </div>
     </section>
 
-    <section id="finance" class="section">
-        <div class="container">
-            <h2 style="font-size: 2.5rem; margin-bottom: 20px; font-weight: 800;">Финансовая модель</h2>
-            <p style="color: var(--text-secondary); max-width: 600px;">Мы предлагаем гибкие условия сотрудничества для максимизации вашей прибыли.</p>
-
-            <div class="models-grid fade-up">
-                <div class="model-card">
-                    <h4>Модель A: Fix (Аренда)</h4>
-                    <p style="margin-bottom: 20px; font-size: 0.95rem;">Стабильный, прогнозируемый бюджет.</p>
-                    <ul>
-                        <li>Фиксированная плата за 1 тележку</li>
-                        <li>Оплата ежеквартально (предоплата)</li>
-                        <li>Независимость от сезона и продаж</li>
-                    </ul>
-                </div>
-
-                <div class="model-card">
-                    <h4>Модель B: Revenue Share (%)</h4>
-                    <p style="margin-bottom: 20px; font-size: 0.95rem;">Максимальная прибыль (High Potential).</p>
-                    <ul>
-                        <li>% от каждого контракта (Open Book)</li>
-                        <li>Высокий доход в праздники (Q4)</li>
-                        <li>Прозрачная отчетность по сделкам</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="section">
         <div class="container">
-            <h2 style="font-size: 2.5rem; margin-bottom: 50px; font-weight: 800;">Процесс запуска (SLA)</h2>
+            <h2 style="font-size: 2.5rem; margin-bottom: 50px; font-weight: 800;">Процесс запуска</h2>
             <div class="roadmap fade-up">
                 <div class="step">
                     <h4>1. Технический аудит (3 дня)</h4>
@@ -667,13 +598,14 @@
                 <p style="max-width: 600px; margin: 0 auto 40px auto; color: var(--text-secondary); font-size: 1.1rem;">
                     Предлагаем 15-минутный звонок, чтобы рассчитать доход для вашей сети исходя из количества тележек.
                 </p>
-                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                    <a href="tel:+375290000000" class="btn-primary">Позвонить: +375 (29) 000-00-00</a>
-                    <a href="mailto:info@pixales.by" style="padding: 20px 40px; border: 1px solid var(--border-light); border-radius: 8px; color: white; text-decoration: none; font-weight: 600; font-size: 1.1rem;">info@pixales.by</a>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 15px; margin-bottom: 30px;">
+                     <a href="tel:+375291010787" class="btn-primary" style="width: auto; min-width: 300px;">+375 29 101-07-87</a>
+                    <a href="tel:+375293777375" class="btn-cloud" style="width: auto; min-width: 300px; justify-content: center;">+375 29 377-73-75</a>
                 </div>
+                <a href="mailto:peaksales@mail.ru" style="color: var(--accent-gold-bright); text-decoration: none; font-size: 1.2rem; font-weight: 700;">peaksales@mail.ru</a>
             </div>
             <p style="text-align: center; margin-top: 60px; font-size: 0.85rem; color: #555;">
-                &copy; 2026 Рекламное агентство «PIXALES». Все права защищены.
+                &copy; 2026 ООО «Пиксейлз». Все права защищены.
             </p>
         </div>
     </footer>
