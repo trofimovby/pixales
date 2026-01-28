@@ -409,6 +409,107 @@
                 font-size: 2rem;
             }
         }
+
+        /* --- Улучшения для секции Projects (Mobile) --- */
+
+/* Скрываем подсказку свайпа на ПК */
+.swipe-hint { display: none; }
+
+@media (max-width: 768px) {
+
+    /* 1. Красивые карточки для списка вместо обычного текста */
+    .styled-list li {
+        background: rgba(255, 255, 255, 0.03);
+        padding: 16px;
+        padding-left: 45px; /* Место под галочку */
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        margin-bottom: 12px;
+    }
+
+    .styled-list li::before {
+        left: 15px; /* Двигаем галочку внутрь паддинга */
+        top: 16px;
+        font-size: 1.2rem;
+    }
+
+    /* 2. Показываем подсказку "Свайп" */
+    .swipe-hint { display: block; animation: fade-pulse 2s infinite; }
+
+    @keyframes fade-pulse {
+        0%, 100% { opacity: 0.6; }
+        50% { opacity: 1; transform: translateX(3px); }
+    }
+
+    /* 3. Горизонтальная свайп-галерея */
+    .snap-gallery {
+        display: flex !important; /* Перебиваем Grid */
+        grid-template-columns: none !important;
+
+        overflow-x: auto; /* Разрешаем скролл по горизонтали */
+        scroll-snap-type: x mandatory; /* Магнитный скролл */
+
+        gap: 15px;
+        padding-bottom: 20px; /* Место, чтобы скроллбар не налипал (если он есть) */
+
+        /* Хак, чтобы галерея была от края до края экрана, игнорируя паддинги контейнера */
+        margin-right: -20px;
+        padding-right: 20px; /* Компенсация margin */
+
+        /* Скрываем скроллбар для красоты */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;  /* IE */
+    }
+
+    .snap-gallery::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
+    }
+
+    .gallery-item {
+        /* Картинка занимает 85% ширины экрана.
+           Пользователь видит край следующей и понимает, что можно листать. */
+        min-width: 85vw;
+        height: 240px !important; /* Фиксируем высоту */
+        object-fit: cover;
+        scroll-snap-align: center; /* Картинка всегда встает по центру */
+        margin: 0;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* Тень поменьше для мобил */
+    }
+}
+
+        /* --- ФИКС КВАДРАТНЫХ ФОТО --- */
+
+/* 1. Общий стиль для галереи (и Десктоп, и Мобайл) */
+.geo-photos .content-image {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Жестко задаем пропорцию КВАДРАТ */
+    object-fit: cover;   /* Магия: обрезает лишнее, не сплющивая картинку */
+    border-radius: 12px;
+    height: auto;        /* Сбрасываем жесткие высоты, если были */
+}
+
+/* 2. Настройки именно для мобильного свайпа */
+@media (max-width: 768px) {
+    .snap-gallery {
+        /* Убеждаемся, что контейнер позволяет элементам быть в ряд */
+        display: flex !important;
+        overflow-x: auto;
+        padding-bottom: 20px;
+        gap: 15px;
+    }
+
+    .gallery-item {
+        /* На мобильном делаем фиксированный размер квадрата */
+        /* Это смотрится аккуратнее, чем % ширины экрана */
+        min-width: 280px;
+        width: 280px;
+        height: 280px !important; /* Принудительный квадрат */
+
+        /* Если хочешь чуть меньше квадраты, поставь здесь и выше по 250px */
+        scroll-snap-align: center;
+        margin: 0;
+    }
+}
     </style>
 </head>
 <body>
@@ -462,31 +563,49 @@
         </div>
     </section>
 
-    <section id="clients" class="section">
-        <div class="container split-section">
-            <div class="fade-up">
-                <h2 style="font-size: 2.2rem; margin-bottom: 20px; font-weight: 800;">Почему мы <span class="text-gold">стартуем сейчас?</span></h2>
-                <p style="color: var(--text-secondary); margin-bottom: 30px; font-size: 1.1rem;">
-                    Мы не приходим с «идеей», мы приходим с утвержденным бюджетом. Интерес рекламодателей к Trade Marketing на пике.
-                </p>
-                <ul class="list-box">
-                    <li><b>Есть заказчики:</b> Крупные бренды уже подтвердили участие в прокате с февраля 2026 года.</li>
-                    <li><b>Аудит носителей:</b> Мы протестировали различные формы (винил, рамки) и выбрали те, что не вредят инвентарю.</li>
-                    <li><b>Ликвидность:</b> Вы начнете получать арендные платежи уже в 1-м квартале этого года.</li>
-                </ul>
+    <section id="clients" class="section clients-mobile-opt">
+    <div class="container split-section">
+        <div class="fade-up">
+            <h2 style="font-size: 2.2rem; margin-bottom: 20px; font-weight: 800; line-height: 1.1;">
+                Почему мы <span class="text-gold">стартуем сейчас?</span>
+            </h2>
+            <p style="color: var(--text-secondary); margin-bottom: 30px; font-size: 1.1rem;">
+                Мы не приходим с «идеей», мы приходим с утвержденным бюджетом. Интерес рекламодателей к Trade Marketing на пике.
+            </p>
+            <ul class="list-box styled-list">
+                <li>
+                    <b>Есть заказчики:</b><br>
+                    <span style="font-size: 0.95rem; opacity: 0.9;">Крупные бренды уже подтвердили участие с февраля 2026.</span>
+                </li>
+                <li>
+                    <b>Аудит носителей:</b><br>
+                    <span style="font-size: 0.95rem; opacity: 0.9;">Протестировали формы (винил, рамки) — инвентарь в безопасности.</span>
+                </li>
+                <li>
+                    <b>Ликвидность:</b><br>
+                    <span style="font-size: 0.95rem; opacity: 0.9;">Арендные платежи начнут поступать уже в 1-м квартале.</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="geo-block fade-up">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 15px;">
+                <div style="font-weight: 700; font-size: 1.2rem;">Примеры реализации</div>
+                <div class="swipe-hint text-gold" style="font-size: 0.8rem; font-weight: 600;">Свайп →</div>
             </div>
 
-            <div class="geo-block fade-up">
-                <div style="font-weight: 700; margin-bottom: 15px; font-size: 1.2rem;">Примеры реализации</div>
-                <p style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 25px;">Фото установленных конструкций в торговом зале.</p>
-                <div class="geo-photos">
-    <img src="gallery_1.webp" alt="Пример 1" class="content-image" style="height: 100%; object-fit: cover;">
-    <img src="gallery_2.webp" alt="Пример 2" class="content-image" style="height: 100%; object-fit: cover;">
-    <img src="gallery_3.webp" alt="Пример 3" class="content-image" style="height: 100%; object-fit: cover;">
-</div>
+            <p style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 20px;">
+                Фото установленных конструкций в торговом зале.
+            </p>
+
+            <div class="geo-photos snap-gallery">
+                <img src="gallery_1.webp" alt="Пример 1" class="content-image gallery-item">
+                <img src="gallery_2.webp" alt="Пример 2" class="content-image gallery-item">
+                <img src="gallery_3.webp" alt="Пример 3" class="content-image gallery-item">
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <section id="offer" class="section">
         <div class="container">
