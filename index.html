@@ -225,94 +225,124 @@
         /* =========================================
            MOBILE OPTIMIZATION (MAX-WIDTH: 768px)
            ========================================= */
-        @media (max-width: 768px) {
+        /* =========================================
+   MOBILE OPTIMIZATION (MAX-WIDTH: 768px)
+   ========================================= */
+@media (max-width: 768px) {
 
-            /* -- Header -- */
-            header { padding: 10px 0; background: rgba(11, 13, 17, 0.98); backdrop-filter: none; /* Оптимизация */ }
-            .nav-links { display: none; }
-            .logo { font-size: 1.1rem; }
+    /* 1. ГЛАВНЫЙ ФИКС: Запрещаем горизонтальную прокрутку всей страницы */
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+        position: relative;
+    }
 
-            /* -- Hero -- */
-            .hero {
-                background-image: none !important; /* Убираем тяжелый фон */
-                background-color: var(--bg-dark) !important;
-                padding-top: 110px;
-                padding-bottom: 60px;
-                min-height: auto;
-                background-attachment: scroll !important;
-            }
-            .hero h1 { font-size: 2rem; line-height: 1.2; }
-            .hero p { font-size: 1rem; margin-bottom: 30px; }
+    /* -- Header -- */
+    header { padding: 10px 0; background: rgba(11, 13, 17, 0.98); backdrop-filter: none; }
+    .nav-links { display: none; }
+    .logo { font-size: 1.1rem; }
 
-            .hero-mobile-img {
-                display: block; width: 100%; height: auto; border-radius: 12px;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* Легкая тень */
-                border: 1px solid var(--border-light); margin-bottom: 30px;
-            }
+    /* -- Hero -- */
+    .hero {
+        background-image: none !important;
+        background-color: var(--bg-dark) !important;
+        padding-top: 100px; /* Чуть уменьшил */
+        padding-bottom: 50px;
+        min-height: auto;
+        background-attachment: scroll !important;
+    }
+    .hero h1 { font-size: 1.8rem; line-height: 1.2; } /* Чуть компактнее шрифт */
+    .hero p { font-size: 0.95rem; margin-bottom: 25px; }
 
-            .btn-group { flex-direction: column; width: 100%; gap: 15px; }
-            .btn-primary, .btn-cloud { width: 100%; text-align: center; justify-content: center; padding: 15px; }
+    .hero-mobile-img {
+        display: block; width: 100%; height: auto; border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        border: 1px solid var(--border-light); margin-bottom: 25px;
+    }
 
-            /* -- Grids to Single Column -- */
-            .split-section, .stats-grid, .tech-grid { grid-template-columns: 1fr; gap: 40px; }
-            .stats-grid { grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 40px; }
-            .stat-item h3 { font-size: 1.8rem; }
+    .btn-group { flex-direction: column; width: 100%; gap: 12px; margin-top: 30px; }
+    .btn-primary, .btn-cloud { width: 100%; text-align: center; justify-content: center; padding: 14px; }
 
-            /* -- Roadmap Fixes -- */
-            .roadmap { padding-left: 30px; }
-            .step::before { left: -39px; }
+    /* -- Grids -- */
+    .split-section, .stats-grid, .tech-grid { grid-template-columns: 1fr; gap: 30px; } /* Уменьшил gap с 40 до 30 */
+    .stats-grid { grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 30px; }
+    .stat-item h3 { font-size: 1.6rem; }
 
-            /* -- CLIENTS SECTION OPTIMIZATION (Swipe) -- */
+    /* -- Roadmap -- */
+    .roadmap { padding-left: 25px; margin-top: 30px; }
+    .step { margin-bottom: 35px; }
+    .step::before { left: -34px; }
 
-            /* Список превращаем в карточки */
-            .clients-mobile-opt .styled-list li {
-                background: rgba(255, 255, 255, 0.03);
-                padding: 16px 16px 16px 45px;
-                border-radius: 12px;
-                border: 1px solid rgba(255, 255, 255, 0.05);
-                margin-bottom: 12px;
-            }
-            .clients-mobile-opt .styled-list li::before { left: 15px; top: 16px; font-size: 1.2rem; }
+    /* -- СЕКЦИЯ ПОЧЕМУ МЫ (Clients) -- */
 
-            /* Подсказка свайпа */
-            .swipe-hint {
-                display: block;
-                animation: fade-pulse 2s infinite;
-            }
-            @keyframes fade-pulse {
-                0%, 100% { opacity: 0.5; }
-                50% { opacity: 1; transform: translateX(3px); }
-            }
+    /* Фикс заголовка, чтобы не был огромным */
+    .clients-mobile-opt h2 {
+        font-size: 1.8rem !important;
+        line-height: 1.2;
+    }
 
-            /* Галерея Свайп */
-            .snap-gallery {
-                display: flex !important; /* Flex вместо Grid */
-                grid-template-columns: none !important;
-                overflow-x: auto;
-                scroll-snap-type: x mandatory;
-                gap: 15px;
-                padding-bottom: 20px;
-                /* Отрицательные отступы для свайпа "от края до края" */
-                margin-right: -20px;
-                padding-right: 20px;
-                scroll-padding-left: 0;
-                -webkit-overflow-scrolling: touch; /* Плавный скролл на iOS */
-                scrollbar-width: none;
-            }
-            .snap-gallery::-webkit-scrollbar { display: none; }
+    /* Список: делаем компактнее по высоте */
+    .clients-mobile-opt .styled-list li {
+        background: rgba(255, 255, 255, 0.03);
+        padding: 12px 12px 12px 40px; /* Уменьшили паддинги */
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        margin-bottom: 10px;
+        font-size: 0.95rem; /* Чуть меньше шрифт */
+    }
+    /* Галочка */
+    .clients-mobile-opt .styled-list li::before {
+        left: 12px; top: 12px; font-size: 1.1rem;
+    }
+    /* Текст внутри списка */
+    .clients-mobile-opt .styled-list li span {
+        font-size: 0.85rem !important;
+        display: block;
+        margin-top: 2px;
+        line-height: 1.4;
+    }
 
-            .gallery-item {
-                /* Важно: min-width и width фиксируем, чтобы были одинаковые */
-                min-width: 260px;
-                width: 260px;
-                height: 260px !important; /* Квадрат */
-                scroll-snap-align: center;
-                margin: 0;
-                box-shadow: 0 5px 20px rgba(0,0,0,0.4);
-            }
-            /* Центрирование первой картинки при старте, если нужно, или просто align center */
-            .snap-gallery::after { content: ''; min-width: 5px; } /* Распорка справа */
-        }
+    /* Подсказка свайпа */
+    .swipe-hint {
+        display: block;
+        animation: fade-pulse 2s infinite;
+    }
+    @keyframes fade-pulse {
+        0%, 100% { opacity: 0.5; }
+        50% { opacity: 1; transform: translateX(3px); }
+    }
+
+    /* ФИКС ГАЛЕРЕИ (ЧТОБЫ НЕ РАСТЯГИВАЛА ЭКРАН) */
+    .snap-gallery {
+        display: flex !important;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 12px;
+        padding-bottom: 20px;
+
+        /* Исправленная логика "от края до края" */
+        width: 100vw; /* Ширина ровно в экран */
+        margin-left: -20px; /* Компенсируем padding контейнера */
+        padding-left: 20px; /* Возвращаем отступ контенту */
+        padding-right: 20px; /* Отступ справа */
+
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    .snap-gallery::-webkit-scrollbar { display: none; }
+
+    .gallery-item {
+        /* Уменьшили ширину карточки, чтобы она точно влезала даже на узкие экраны */
+        min-width: 250px;
+        width: 250px;
+        height: 250px !important;
+        scroll-snap-align: center; /* Центрирование */
+        margin: 0;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        /* Важно: предотвращаем сплющивание */
+        flex-shrink: 0;
+    }
+}
     </style>
 </head>
 <body>
